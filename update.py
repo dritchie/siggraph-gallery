@@ -2,9 +2,10 @@ import argparse
 import csv
 import json
 import os
+from PIL import Image
 
 __config = None
-def loadconfig():
+def config():
     global __config
     if __config is None:
         dirPath = os.path.dirname(os.path.abspath(__file__))
@@ -47,18 +48,33 @@ def update(csvFilename):
 
     # Figure out which new entries have been added
     newEntries = {}
-    for name in newJson:
-        if not name in currJson:
-            newEntries[name] = newJson[name]
+    for key in newJson:
+        if not key in currJson:
+            newEntries[key] = newJson[key]
 
     # Make thumbnails for these new images
-
     # Upload these new images + thumbnails to S3
+    dirPath = os.path.dirname(os.path.abspath(__file__))
+    imageDir = os.path.join(dirPath, 'images')
+    thumbDir = os.path.join(dirPath, 'thumbs')
+    thumbSize = config()['thumbnailSize']
+    for key in newEntries:
+        # Create thumbnail
+        with Image.open(os.path.join(imageDir, key+'.png')) as im:
+            if im.height > im.width:
+                newSize = (int(im.width/im.height * thumbSize), thumbSize)
+            else:
+                newSize = (thumbSize, int(im.height/im.width * thumbSize))
+            thumb = im.resize(newSize)
+            thumb.save(os.path.join(thumbDir, key+'.png'))
+        # Upload to S3
+        # TODO
     
     # Save the new entries to disk as JSON
     savejson(newJson)
 
     # Write the new JSON into the HTML of the webpage itself
+    # TODO
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser();
