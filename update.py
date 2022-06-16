@@ -1,4 +1,5 @@
 import argparse
+import boto3
 import csv
 import json
 import os
@@ -52,14 +53,25 @@ def update(csvFilename):
         if not key in currJson:
             newEntries[key] = newJson[key]
 
+    if len(newEntries) == 0:
+        print('No new entries detected; exiting')
+        return
+
+    print(f'Found {len(newEntries)} new entries:')
+    for key in newEntries:
+        print('   ' + key)
+
     # Make thumbnails for these new images
     # Upload these new images + thumbnails to S3
+    s3 = boto3.client('s3')
     dirPath = os.path.dirname(os.path.abspath(__file__))
     imageDir = os.path.join(dirPath, 'images')
     thumbDir = os.path.join(dirPath, 'thumbs')
     thumbSize = config()['thumbnailSize']
     for key in newEntries:
+        print(f'Processing {key}...')
         # Create thumbnail
+        print('   Creating thumbnail...')
         with Image.open(os.path.join(imageDir, key+'.png')) as im:
             if im.height > im.width:
                 newSize = (int(im.width/im.height * thumbSize), thumbSize)
@@ -68,13 +80,19 @@ def update(csvFilename):
             thumb = im.resize(newSize)
             thumb.save(os.path.join(thumbDir, key+'.png'))
         # Upload to S3
-        # TODO
+        print('   Uploading image to S3....')
+        s3.upload_file(os.path.join(imageDir, key+'.png'), 'siggraph-gallery', f'images/{key}.png')
+        print('   Uploading thumbnail to S3....')
+        s3.upload_file(os.path.join(thumbDir, key+'.png'), 'siggraph-gallery', f'thumbs/{key}.png')
     
     # Save the new entries to disk as JSON
+    print('Saving new entries to database.json...')
     savejson(newJson)
 
     # Write the new JSON into the HTML of the webpage itself
     # TODO
+
+    print('DONE')
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser();
