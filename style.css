@@ -1,0 +1,40 @@
+body {
+    background-color: #182b3c;
+    color: #DDD;
+    font-family: 'News Cycle', sans-serif;
+    font-size: 14pt;
+}
+
+a {
+    color: #C37F7B;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:hover {
+    color: #A74348;
+}
+
+.section {
+    margin-top: 10pt;
+    margin-bottom: 10pt;
+}
+
+.header {
+    color: white;
+}
+
+#title {
+    font-size: 30pt;
+    font-weight: bold;
+}
+
+#headerlinks {
+    text-align: right;
+}
+
+#nanogallery2 {
+    background-color: #111;
+}

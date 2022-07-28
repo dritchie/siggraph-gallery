@@ -17,7 +17,7 @@ def config():
 
 def loadjson():
     dirPath = os.path.dirname(os.path.abspath(__file__))
-    filename = os.path.join(dirPath, 'database.json')
+    filename = os.path.join(dirPath, '_data', 'database.json')
     if not os.path.exists(filename):
         return {}
     else:
@@ -26,7 +26,7 @@ def loadjson():
 
 def savejson(jsonData):
     dirPath = os.path.dirname(os.path.abspath(__file__))
-    filename = os.path.join(dirPath, 'database.json')
+    filename = os.path.join(dirPath, '_data', 'database.json')
     with open(filename, 'w') as f:
         json.dump(jsonData, f, sort_keys=True, indent=3)
 
@@ -88,9 +88,6 @@ def update(csvFilename):
     # Save the new entries to disk as JSON
     print('Saving new entries to database.json...')
     savejson(newJson)
-
-    # Write the new JSON into the HTML of the webpage itself
-    # TODO
 
     print('DONE')
 
