@@ -32,7 +32,7 @@ layout: default
             <div class="col-md-2" id="headerlinks">
                 <a href="#about_section">About</a>
                 &nbsp;
-                <a href="???">Submit</a>
+                <a href="https://forms.gle/Bx33V1wmQRJJLhkj9">Submit</a>
             </div>
         </div>
         <div class="row">
@@ -46,15 +46,33 @@ layout: default
         <div class="col" id="nanogallery2"
         
             data-nanogallery2 = '{
+                "itemsBaseURL":     "https://siggraph-gallery.s3.amazonaws.com/",
+
                 "thumbnailHeight":  150,
                 "thumbnailWidth":   150,
-                "itemsBaseURL":     "https://siggraph-gallery.s3.amazonaws.com/"
+                "thumbnailLabel": { "display": false },
+                "thumbnailDisplayTransition": "slideDown",
+                "thumbnailDisplayTransitionDuration": 300,
+                "thumbnailDisplayInterval": 50,
+                "thumbnailBuildInit2": "tools_font-size_1.5em|title_font-size_1.5em",
+                "thumbnailHoverEffect2": "image_scale_1.00_1.20_1000|tools_opacity_0_1|tools_translateX_-30px_0px|title_opacity_1_0|title_translateX_0px_-30px",
+                "touchAnimation": true,
+                "touchAutoOpenDelay": 500,
+                
+                "viewerToolbar":   {
+                    "display":    true,
+                    "standard":   "label",
+                    "minimized":  "label"
+                  }
                 }' >
 
             {% for entry in site.data.database %}
                 {% assign id = entry[0] %}
                 {% assign data = entry[1] %}
-                <a href="images/{{id}}.png" data-ngThumb="thumbs/{{id}}.png"></a>
+                {% assign paperlink = data['Link to Paper'] %}
+                {% assign authors = data['Authors'] | join: ', ' %}
+                <a href="images/{{id}}.png" data-ngThumb="thumbs/{{id}}.png" data-ngdesc="{{authors}}
+                {{data['Venue']}} {{data['Year']}}">{{data['Title']}}</a>
             {% endfor %}
         </div>
     </div>
@@ -63,13 +81,13 @@ layout: default
         <div class="col" id="about_section">
             <h3 class="header">About</h3>
             <p>
-                The SIGGRAPH Gallery is an homage to (a specific instantiation of) the creativity of the SIGGRAPH research community.
+                The SIGGRAPH Gallery is an homage to (a specific instantiation of) the creativity and playfulness of the SIGGRAPH research community.
                 It was created by and is maintained by <a href="https://dritchie.github.io">Daniel Ritchie</a>.
             </p>
 
             <p>
                 Ultimately, the goal of this Gallery is to be a complete archive of relevant figures from all past SIGGRAPH papers.
-                If you'd like to help make this vision a reality, please consider helping out by <a href="???">submitting a figure</a> (from one of your own papers, or from another paper that you like).
+                If you'd like to help make this vision a reality, please consider helping out by <a href="https://forms.gle/Bx33V1wmQRJJLhkj9">submitting a figure</a> (from one of your own papers, or from another paper that you like).
             </p>
 
             <p>
