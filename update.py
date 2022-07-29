@@ -67,16 +67,13 @@ def update(csvFilename):
     dirPath = os.path.dirname(os.path.abspath(__file__))
     imageDir = os.path.join(dirPath, 'images')
     thumbDir = os.path.join(dirPath, 'thumbs')
-    thumbSize = config()['thumbnailSize']
+    thumbHeight = config()['thumbnailHeight']
     for key in newEntries:
         print(f'Processing {key}...')
         # Create thumbnail
         print('   Creating thumbnail...')
         with Image.open(os.path.join(imageDir, key+'.png')) as im:
-            if im.height > im.width:
-                newSize = (int(im.width/im.height * thumbSize), thumbSize)
-            else:
-                newSize = (thumbSize, int(im.height/im.width * thumbSize))
+            newSize = (int(im.width/im.height * thumbHeight), thumbHeight)
             thumb = im.resize(newSize)
             thumb.save(os.path.join(thumbDir, key+'.png'))
         # Upload to S3
