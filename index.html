@@ -25,11 +25,24 @@ layout: default
     <link href="https://fonts.googleapis.com/css?family=News+Cycle" rel="stylesheet">
 
     <script type="text/javascript">
+    
         // Function called before the popup for media info is displayed
         // We use this to display extra info (e.g. figure caption)
         function myPopupInfo(item, title, content) {
             var my_title = title;
-            var my_content = content + '[The content of this popup can be customized with some javascript.]';
+            // console.log(item.customData);
+            var my_content = content 
+                + `<div class="info-subfield">${item.customData.subfield}</div>`
+                + `<div class="info-caption"><b>Figure ${item.customData.fignum}:</b> ${item.customData.caption}</div>`;
+
+            // Total hack, but it works: wait a few ms for the info popup to display, then delete the elements
+            //    that I don't want.
+            // (I do it this way b/c there's no callback/event for when the info popup has been displayed)
+            setTimeout(() => {
+                $('.nGY2PopupOneItemText .nGY2Icon-picture').parent().remove();
+                $('.nGY2PopupOneItemText .nGY2Icon-location').parent().remove();
+            }, 10);
+
             return {title: my_title, content: my_content};
         }
 
@@ -38,7 +51,6 @@ layout: default
             // We use this to make the title/description in the toolbar clickable to open to the info box.
             $('#nanogallery2').on('lightboxImageDisplayed.nanogallery2', function(e) {
                 var button = $('.toolbar .label').parent();
-                console.log(button);
                 button.addClass('ngEvent');
                 button.attr('data-ngy2action', 'info');
             });
@@ -99,8 +111,18 @@ layout: default
                 {% assign data = entry[1] %}
                 {% assign paperlink = data['Link to Paper'] %}
                 {% assign authors = data['Authors'] | join: ', ' %}
+                {% assign subfield = data['Sub-field'] %}
+                {% assign fignum = data['Figure #'] %}
+                <!-- {% assign caption = data['Caption'] | replace: '"', '\"' %} -->
+                {% assign caption = data['Caption'] %}
+                <!-- {% assign caption = data['Caption'] | escape %} -->
+                <!-- {% assign caption = data['Caption'] | remove: '"' %} -->
                 <a href="images/{{id}}.png" data-ngThumb="thumbs/{{id}}.png" data-ngdesc="{{authors}}
-                {{data['Venue']}} {{data['Year']}}">{{data['Title']}}</a>
+                {{data['Venue']}} {{data['Year']}}" data-ngcustomData='{
+                    "subfield": "{{subfield}}",
+                    "fignum": "{{fignum}}",
+                    "caption": "{{caption}}"
+                }'>{{data['Title']}}</a>
             {% endfor %}
         </div>
     </div>

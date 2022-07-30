@@ -35,9 +35,16 @@ a:hover {
     text-align: right;
 }
 
-/* #nanogallery2 {
-    background-color: #111;
-} */
+.info-caption {
+    margin-left: 8pt;
+}
+
+.info-subfield {
+    margin-left: 8pt;
+    margin-bottom: 7pt;
+    font-style: italic;
+    color: #A74348;
+}
 
 
 
