@@ -23,6 +23,27 @@ layout: default
 
     <!-- Font used by the page -->
     <link href="https://fonts.googleapis.com/css?family=News+Cycle" rel="stylesheet">
+
+    <script type="text/javascript">
+        // Function called before the popup for media info is displayed
+        // We use this to display extra info (e.g. figure caption)
+        function myPopupInfo(item, title, content) {
+            var my_title = title;
+            var my_content = content + '[The content of this popup can be customized with some javascript.]';
+            return {title: my_title, content: my_content};
+        }
+
+        window.onload = function() {
+            // Event handler for whenever a lightbox image is displayed.
+            // We use this to make the title/description in the toolbar clickable to open to the info box.
+            $('#nanogallery2').on('lightboxImageDisplayed.nanogallery2', function(e) {
+                var button = $('.toolbar .label').parent();
+                console.log(button);
+                button.addClass('ngEvent');
+                button.attr('data-ngy2action', 'info');
+            });
+        };
+    </script>
 </head>
 
 <body>
@@ -30,7 +51,7 @@ layout: default
         <div class="row">
             <div class="col-md-10 header" id="title">{{site.title}}</div>
             <div class="col-md-2" id="headerlinks">
-                <a href="#about_section">About</a>
+                <a href="#about">About</a>
                 &nbsp;
                 <a href="https://forms.gle/Bx33V1wmQRJJLhkj9">Submit</a>
             </div>
@@ -64,12 +85,13 @@ layout: default
                 "thumbnailHoverEffect2": "image_scale_1.00_1.20_1000|tools_opacity_0_1|tools_translateX_-30px_0px|title_opacity_1_0|title_translateX_0px_-30px",
                 "touchAnimation": true,
                 "touchAutoOpenDelay": 500,
+
+                "fnPopupMediaInfo": "myPopupInfo",
                 
                 "viewerToolbar":   {
                     "display":    true,
-                    "standard":   "label",
-                    "minimized":  "label"
-                  }
+                    "standard":   "label"
+                }
                 }' >
 
             {% for entry in site.data.database %}
@@ -84,7 +106,7 @@ layout: default
     </div>
 
     <div class="row section">
-        <div class="col" id="about_section">
+        <div class="col" id="about">
             <h3 class="header">About</h3>
             <p>
                 The SIGGRAPH Gallery is an homage to (a specific instantiation of) the creativity and playfulness of the SIGGRAPH research community.
