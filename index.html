@@ -104,7 +104,6 @@ layout: default
                 }
                 }' >
             
-            {% for i in (1..30) %}
             {% for entry in site.data.database %}
                 {% assign id = entry[0] %}
                 {% assign data = entry[1] %}
@@ -123,7 +122,6 @@ layout: default
                     "caption": "{{caption}}",
                     "paperlink": "{{paperlink}}"
                 }'>{{data['Title']}}</a>
-            {% endfor %}
             {% endfor %}
         </div>
     </div>
