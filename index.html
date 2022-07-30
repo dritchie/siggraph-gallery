@@ -30,10 +30,11 @@ layout: default
         // We use this to display extra info (e.g. figure caption)
         function myPopupInfo(item, title, content) {
             var my_title = title;
-            // console.log(item.customData);
+            console.log(item.customData);
             var my_content = content 
                 + `<div class="info-subfield">${item.customData.subfield}</div>`
-                + `<div class="info-caption"><b>Figure ${item.customData.fignum}:</b> ${item.customData.caption}</div>`;
+                + `<div class="info-caption"><b>Figure ${item.customData.fignum}:</b> ${item.customData.caption}</div>`
+                + `<div class="info-link"><a target="_blank" href="${item.customData.paperlink}">Link to Paper</a></div>`;
 
             // Total hack, but it works: wait a few ms for the info popup to display, then delete the elements
             //    that I don't want.
@@ -65,7 +66,7 @@ layout: default
             <div class="col-md-2" id="headerlinks">
                 <a href="#about">About</a>
                 &nbsp;
-                <a href="https://forms.gle/Bx33V1wmQRJJLhkj9">Submit</a>
+                <a target="_blank" href="https://forms.gle/Bx33V1wmQRJJLhkj9">Submit</a>
             </div>
         </div>
         <div class="row">
@@ -105,7 +106,7 @@ layout: default
                     "standard":   "label"
                 }
                 }' >
-
+                
             {% for entry in site.data.database %}
                 {% assign id = entry[0] %}
                 {% assign data = entry[1] %}
@@ -121,7 +122,8 @@ layout: default
                 {{data['Venue']}} {{data['Year']}}" data-ngcustomData='{
                     "subfield": "{{subfield}}",
                     "fignum": "{{fignum}}",
-                    "caption": "{{caption}}"
+                    "caption": "{{caption}}",
+                    "paperlink": "{{paperlink}}"
                 }'>{{data['Title']}}</a>
             {% endfor %}
         </div>
@@ -132,16 +134,16 @@ layout: default
             <h3 class="header">About</h3>
             <p>
                 The SIGGRAPH Gallery is an homage to (a specific instantiation of) the creativity and playfulness of the SIGGRAPH research community.
-                It was created by and is maintained by <a href="https://dritchie.github.io">Daniel Ritchie</a>.
+                It was created by and is maintained by <a target="_blank" href="https://dritchie.github.io">Daniel Ritchie</a>.
             </p>
 
             <p>
                 Ultimately, the goal of this Gallery is to be a complete archive of relevant figures from all past SIGGRAPH papers.
-                If you'd like to help make this vision a reality, please consider helping out by <a href="https://forms.gle/Bx33V1wmQRJJLhkj9">submitting a figure</a> (from one of your own papers, or from another paper that you like).
+                If you'd like to help make this vision a reality, please consider helping out by <a target="_blank" href="https://forms.gle/Bx33V1wmQRJJLhkj9">submitting a figure</a> (from one of your own papers, or from another paper that you like).
             </p>
 
             <p>
-                This website is built atop the excellent <a href="https://nanogallery2.nanostudio.org/">nanogallery2</a> library.
+                This website is built atop the excellent <a target="_blank" href="https://nanogallery2.nanostudio.org/">nanogallery2</a> library.
             </p>
         </div>
     </div>

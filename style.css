@@ -37,13 +37,18 @@ a:hover {
 
 .info-caption {
     margin-left: 8pt;
+    margin-bottom: 8pt;
 }
 
 .info-subfield {
     margin-left: 8pt;
-    margin-bottom: 7pt;
+    margin-bottom: 8pt;
     font-style: italic;
-    color: #A74348;
+    color: #287bc3;
+}
+
+.info-link {
+    margin-left: 8pt;
 }
 
 
