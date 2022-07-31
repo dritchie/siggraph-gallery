@@ -39,66 +39,47 @@ layout: default
             return {title: title, content: my_content};
         }
 
-        // Sort the tags in the filter navigation bar
-        function sortTags() {
-            var tags = $('.nGY2Navigationbar').children();
-            var reset = tags.last();
-            var types = tags.filter(function(index) { return this.innerText == ' Name' || this.innerText == ' Logo'});
-            reset.insertBefore(tags.first());
-            types.insertAfter(reset);
-        }
+        function rebuildGallery(sortChanged) {
+            var selectVal = $('#sort').val();
 
-        window.onload = function() {
-
-            // Sort the filter tags
-            $('#nanogallery2').on('galleryObjectModelBuilt.nanogallery2', (e) => {
-                sortTags();
+            // Get the items in the gallery and resort them according to the sort mode
+            var data = $('#nanogallery2').nanogallery2('data');
+            var items = data.items.slice(1).map((item) => {
+                return {
+                    src: item.src,
+                    srct: item.thumbs.url.l1.la,
+                    title: item.title,
+                    description: item.description,
+                    customData: item.customData,
+                    tags: item.tags.join(' ')
+                };
             });
-
-            // Handle when the user changes the sort option
-            $('#sortcontrols select').change((e) => {
-                var selectVal = $('#sortcontrols select').val();
-
-                // Get the items in the gallery and resort them according to the sort mode
-                var data = $('#nanogallery2').nanogallery2('data');
-                var items = data.items.slice(1).map((item) => {
-                    return {
-                        src: item.src,
-                        srct: item.thumbs.url.l1.la,
-                        title: item.title,
-                        description: item.description,
-                        customData: item.customData,
-                        tags: item.tags.join(' ')
-                    };
-                });
+            if (sortChanged) {
                 if (selectVal == "Oldest first") {
                     items.sort((a,b) => { return a.customData.year - b.customData.year; });
                 } else if (selectVal == "Newest first") {
                     items.sort((a,b) => { return b.customData.year - a.customData.year; });
                 }
+            }
 
-                console.log(items);
+            // Destroy & re-create the gallery with the new sort settings
+            // (Unfortunately there does not appear to be a way to do this "in place")
+            var settings = JSON.parse($('#nanogallery2').attr('data-nanogallery2'));
+            settings.items = items;
+            if (sortChanged && selectVal == 'Random') {
+                settings.gallerySorting = 'random';
+            } else {
+                settings.gallerySorting = '';
+            }
+            $('#nanogallery2').nanogallery2('destroy');
+            $('#nanogallery2').nanogallery2(settings);
+        }
 
-                // Destroy & re-create the gallery with the new sorting settings
-                // (Unfortunately there does not appear to be a way to do this "in place")
-                var settings = JSON.parse($('#nanogallery2').attr('data-nanogallery2'));
-                settings.items = items;
-                if (selectVal == 'Random') {
-                    settings.gallerySorting = 'random';
-                } else {
-                    settings.gallerySorting = '';
-                }
-                $('#nanogallery2').nanogallery2('destroy');
-                $('#nanogallery2').nanogallery2(settings);
-            });
-
-            // Event handler for whenever a lightbox image is displayed.
-            // We use this to make the title/description in the toolbar clickable to open to the info box.
-            $('#nanogallery2').on('lightboxImageDisplayed.nanogallery2', (e) => {
-                var button = $('.toolbar .label').parent();
-                button.addClass('ngEvent');
-                button.attr('data-ngy2action', 'info');
-            });
+        window.onload = function() {
+            // Handle when the user changes the sort/type options
+            $('#sort').change(() => { rebuildGallery(true); });
+            $('#checkName').change(() => { rebuildGallery(false); });
+            $('#checkLogo').change(() => { rebuildGallery(false); });
         };
     </script>
 </head>
@@ -123,80 +104,85 @@ layout: default
     <hr/>
 
     <div class="row section">
-        <div class=""col>
-            <div id="sortcontrols">
-                <span>Sort by:</span>
-                <select>
-                    <option>Random</option>
-                    <option>Newest first</option>
-                    <option>Oldest first</option>
-                </select>
+        <div id="controls">
+            <span>Sort by:</span>
+            <select id="sort">
+                <option>Random</option>
+                <option>Newest first</option>
+                <option>Oldest first</option>
+            </select>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" value="" id="checkName" checked>
+                <label class="form-check-label" for="checkName">Name</label>
             </div>
-            <div id="nanogallery2"
-                data-nanogallery2 = '{
-                    "itemsBaseURL": "https://siggraph-gallery.s3.amazonaws.com/",
-
-                    "galleryDisplayMode": "pagination",
-                    "galleryPaginationMode": "numbers",
-                    "galleryMaxRows": 3,
-                    "gallerySorting": "random",
-
-                    "galleryPaginationTopButtons": false,
-                    "galleryFilterTags": true,
-                    "galleryFilterTagsMode": "multiple",
-                    "navigationFontSize": "12pt",
-
-                    "thumbnailHeight": "250", "thumbnailWidth": "auto",
-                    "thumbnailAlignment": "fillWidth",
-                    "thumbnailL1GutterWidth": 20,
-                    "thumbnailL1GutterHeight": 20,
-                    "thumbnailBorderHorizontal": 1,
-                    "thumbnailBorderVertical": 1,
-                    "thumbnailLabel": { "display": false },
-                    "thumbnailDisplayTransition": "slideDown",
-                    "thumbnailDisplayTransitionDuration": 300,
-                    "thumbnailDisplayInterval": 50,
-                    "thumbnailBuildInit2": "tools_font-size_1.5em|title_font-size_1.5em",
-                    "thumbnailHoverEffect2": "image_scale_1.00_1.20_1000|tools_opacity_0_1|tools_translateX_-30px_0px|title_opacity_1_0|title_translateX_0px_-30px",
-                    "touchAnimation": true,
-                    "touchAutoOpenDelay": 500,
-
-                    "fnPopupMediaInfo": "myPopupInfo",
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" value="" id="checkLogo" checked>
+                <label class="form-check-label" for="checkLogo">Logo</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div id="nanogallery2"
+                    data-nanogallery2 = '{
+                        "itemsBaseURL": "https://siggraph-gallery.s3.amazonaws.com/",
+    
+                        "galleryDisplayMode": "pagination",
+                        "galleryPaginationMode": "numbers",
+                        "galleryMaxRows": 3,
+                        "gallerySorting": "random",
+    
+                        "galleryPaginationTopButtons": false,
+                        "galleryFilterTags": true,
+                        "galleryFilterTagsMode": "multiple",
+                        "navigationFontSize": "12pt",
+    
+                        "thumbnailHeight": "250", "thumbnailWidth": "auto",
+                        "thumbnailAlignment": "fillWidth",
+                        "thumbnailL1GutterWidth": 20,
+                        "thumbnailL1GutterHeight": 20,
+                        "thumbnailBorderHorizontal": 1,
+                        "thumbnailBorderVertical": 1,
+                        "thumbnailLabel": { "display": false },
+                        "thumbnailDisplayTransition": "slideDown",
+                        "thumbnailDisplayTransitionDuration": 300,
+                        "thumbnailDisplayInterval": 50,
+                        "thumbnailBuildInit2": "tools_font-size_1.5em|title_font-size_1.5em",
+                        "thumbnailHoverEffect2": "image_scale_1.00_1.20_1000|tools_opacity_0_1|tools_translateX_-30px_0px|title_opacity_1_0|title_translateX_0px_-30px",
+                        "touchAnimation": true,
+                        "touchAutoOpenDelay": 500,
+    
+                        "fnPopupMediaInfo": "myPopupInfo",
+                        
+                        "viewerTools": {
+                            "topRight": "zoomButton, fullscreenButton, closeButton"
+                        },
+                        "viewerToolbar":   {
+                            "display":    true,
+                            "standard":   "label"
+                        }
+                        }' >
                     
-                    "viewerTools": {
-                        "topRight": "zoomButton, fullscreenButton, closeButton"
-                    },
-                    "viewerToolbar":   {
-                        "display":    true,
-                        "standard":   "label"
-                    }
-                    }' >
-                
-                {% for entry in site.data.database %}
-                    {% assign id = entry[0] %}
-                    {% assign data = entry[1] %}
-                    {% assign paperlink = data['Link to Paper'] %}
-                    {% assign authors = data['Authors'] | join: ', ' %}
-                    {% assign subfield = data['Sub-field'] %}
-                    {% assign fignum = data['Figure #'] %}
-                    {% assign caption = data['Caption'] | replace: '"', '\"' %}
-                    {% assign year = data['Year'] %}
-                    {% capture typetag %}
-                        {% if data['Type'] == 'Both' %}
-                            Name Logo
-                        {% else %}
-                            {{data['Type']}}
-                        {% endif %}
-                    {% endcapture %}
-                    <a href="images/{{id}}.png" data-ngThumb="thumbs/{{id}}.png" data-ngdesc="{{authors}}
-                    {{data['Venue']}} {{data['Year']}}" data-ngcustomData='{
-                        "subfield": "{{subfield}}",
-                        "fignum": "{{fignum}}",
-                        "caption": "{{caption}}",
-                        "paperlink": "{{paperlink}}",
-                        "year": {{year}}
-                    }' data-ngtags="{{subfield | replace: ' ', '&nbsp;'}} {{typetag | strip}}">{{data['Title']}}</a>
-                {% endfor %}
+                    {% for entry in site.data.database %}
+                        {% assign id = entry[0] %}
+                        {% assign data = entry[1] %}
+                        {% assign paperlink = data['Link to Paper'] %}
+                        {% assign authors = data['Authors'] | join: ', ' %}
+                        {% assign subfield = data['Sub-field'] %}
+                        {% assign fignum = data['Figure #'] %}
+                        {% assign caption = data['Caption'] | replace: '"', '\"' %}
+                        {% assign year = data['Year'] %}
+                        {% assign type = data['Type'] %}
+                        <a href="images/{{id}}.png" data-ngThumb="thumbs/{{id}}.png" data-ngdesc="{{authors}}
+                        {{data['Venue']}} {{data['Year']}}" data-ngcustomData='{
+                            "subfield": "{{subfield}}",
+                            "fignum": "{{fignum}}",
+                            "caption": "{{caption}}",
+                            "paperlink": "{{paperlink}}",
+                            "year": {{year}},
+                            "type": "{{type}}"
+                        }' data-ngtags="{{subfield | replace: ' ', '&nbsp;'}}">{{data['Title']}}</a>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>
