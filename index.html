@@ -39,21 +39,11 @@ layout: default
             return {title: title, content: my_content};
         }
 
+        var _items = undefined;
         function rebuildGallery(sortChanged) {
             var selectVal = $('#sort').val();
 
-            // Get the items in the gallery and resort them according to the sort mode
-            var data = $('#nanogallery2').nanogallery2('data');
-            var items = data.items.slice(1).map((item) => {
-                return {
-                    src: item.src,
-                    srct: item.thumbs.url.l1.la,
-                    title: item.title,
-                    description: item.description,
-                    customData: item.customData,
-                    tags: item.tags.join(' ')
-                };
-            });
+            items = _items.map((item) => { return Object.create(item); });
             if (sortChanged) {
                 if (selectVal == "Oldest first") {
                     items.sort((a,b) => { return a.customData.year - b.customData.year; });
@@ -62,7 +52,17 @@ layout: default
                 }
             }
 
-            // Destroy & re-create the gallery with the new sort settings
+            // Filter out the ones that don't have the right type
+            var uiBitcode = 0;
+            if ($('#checkName').is(':checked')) uiBitcode += 2;
+            if ($('#checkLogo').is(':checked')) uiBitcode += 1;
+            items = items.filter((item) => {
+                var type = item.customData.type;
+                var itemBitcode = (type == 'Name') ? 2 : (type == 'Logo') ? 1 : 3;
+                return (itemBitcode & uiBitcode) != 0;
+            });
+
+            // Destroy & re-create the gallery with these new settings
             // (Unfortunately there does not appear to be a way to do this "in place")
             var settings = JSON.parse($('#nanogallery2').attr('data-nanogallery2'));
             settings.items = items;
@@ -76,6 +76,19 @@ layout: default
         }
 
         window.onload = function() {
+            // Save the complete list of items
+            var data = $('#nanogallery2').nanogallery2('data');
+            _items = data.items.slice(1).map((item) => {
+                return {
+                    src: item.src,
+                    srct: item.thumbs.url.l1.la,
+                    title: item.title,
+                    description: item.description,
+                    customData: item.customData,
+                    tags: item.tags.join(' ')
+                };
+            });
+
             // Handle when the user changes the sort/type options
             $('#sort').change(() => { rebuildGallery(true); });
             $('#checkName').change(() => { rebuildGallery(false); });
