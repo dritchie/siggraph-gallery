@@ -43,6 +43,7 @@ layout: default
         function rebuildGallery(sortChanged) {
             var selectVal = $('#sort').val();
 
+            // Sort items according to sort type
             items = _items.map((item) => { return Object.create(item); });
             if (sortChanged) {
                 if (selectVal == "Oldest first") {
@@ -93,6 +94,15 @@ layout: default
             $('#sort').change(() => { rebuildGallery(true); });
             $('#checkName').change(() => { rebuildGallery(false); });
             $('#checkLogo').change(() => { rebuildGallery(false); });
+
+            // Event handler for whenever a lightbox image is displayed.
+            // We use this to make the title/description in the toolbar clickable to open to the info box.
+            $('#nanogallery2').on('lightboxImageDisplayed.nanogallery2', (e) => {
+                var button = $('.toolbar .label').parent();
+                button.addClass('ngEvent');
+                button.attr('data-ngy2action', 'info');
+            });
+
         };
     </script>
 </head>
