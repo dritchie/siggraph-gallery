@@ -67,7 +67,7 @@ layout: default
             // (Unfortunately there does not appear to be a way to do this "in place")
             var settings = JSON.parse($('#nanogallery2').attr('data-nanogallery2'));
             settings.items = items;
-            if (sortChanged && selectVal == 'Random') {
+            if (sortChanged && selectVal == 'Sort randomly') {
                 settings.gallerySorting = 'random';
             } else {
                 settings.gallerySorting = '';
@@ -90,8 +90,10 @@ layout: default
                 };
             });
 
-            // Handle when the user changes the sort/type options
+            // Handle when the user changes the sort option
             $('#sort').change(() => { rebuildGallery(true); });
+
+            // Handle when the user changes the type filter options
             $('#checkName').change(() => { rebuildGallery(false); });
             $('#checkLogo').change(() => { rebuildGallery(false); });
 
@@ -129,9 +131,8 @@ layout: default
 
     <div class="row section">
         <div id="controls">
-            <span>Sort by:</span>
             <select id="sort">
-                <option>Random</option>
+                <option>Sort randomly</option>
                 <option>Newest first</option>
                 <option>Oldest first</option>
             </select>
@@ -215,7 +216,7 @@ layout: default
         <div class="col" id="about">
             <h3 class="header">About</h3>
             <p>
-                The SIGGRAPH Gallery is an homage to (a specific instantiation of) the creativity and playfulness of the SIGGRAPH research community.
+                The SIGGRAPH Logo Gallery is an homage to (a specific instantiation of) the creativity and playfulness of the SIGGRAPH research community.
                 It was created by and is maintained by <a target="_blank" href="https://dritchie.github.io">Daniel Ritchie</a>.
             </p>
 
