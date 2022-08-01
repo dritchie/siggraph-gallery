@@ -1,0 +1,224 @@
+{
+   "antithetic": {
+      "Authors": [
+         "Cheng Zhang",
+         "Zhao Dong",
+         "Michael Doggett",
+         "Shuang Zhao"
+      ],
+      "Caption": "Differentiable rendering of anisotropic BRDFs: We show (the interior components of ) derivatives obtained with and without our antithetic sampling technique using three base differentiable rendering methods: unidirectional path tracing with edge sampling (Edge) [Li et al. 2018], unidirectional path-space method (PS1) [Zhang et al. 2020]. Our technique allows significantly faster convergence for both base methods.",
+      "Figure #": "8",
+      "Link to Paper": "https://shuangz.com/projects/antithetic-sg21/antithetic-sg21.pdf",
+      "Sub-field": "Rendering",
+      "Title": "Antithetic Sampling for Monte Carlo Differentiable Rendering",
+      "Type": "Logo",
+      "Venue": "SIGGRAPH",
+      "Year": "2021"
+   },
+   "diffvec": {
+      "Authors": [
+         "Tzu-Mao Li",
+         "Michal Luk\u00e1\u010d",
+         "Micha\u00ebl Gharbi",
+         "Jonathan Ragan-Kelley"
+      ],
+      "Caption": "Examples of our brush-based editing using image losses...(b) shows the result (below) of optimization of a block of text characters (above) to locally increase opacity according to a pixel stencil while preserving the shape of characters by optimizing text \"\u2018boldness\"\u2019.",
+      "Figure #": "11",
+      "Link to Paper": "https://people.csail.mit.edu/tzumao/diffvg/diffvg.pdf",
+      "Sub-field": "Rendering",
+      "Title": "Differentiable Vector Graphics Rasterization for Editing and Learning",
+      "Type": "Logo",
+      "Venue": "SIGGRAPH Asia",
+      "Year": "2020"
+   },
+   "kelvintransform": {
+      "Authors": [
+         "Mohammad Sina Nabizadeh",
+         "Ravi Ramamoorthi",
+         "Albert Chern"
+      ],
+      "Caption": "Cross field visualized on the exterior of the letters using Monte Carlo together with Kelvin transform. Blue and red points represent negative and positive singularities, respectively",
+      "Figure #": "15",
+      "Link to Paper": "https://cseweb.ucsd.edu/~viscomp/projects/SIG21KelvinTransform/paper/KelvinTransform.pdf",
+      "Sub-field": "Simulation",
+      "Title": "Kelvin Transformations for Simulations on Infinite Domains",
+      "Type": "Name",
+      "Venue": "SIGGRAPH",
+      "Year": "2021"
+   },
+   "metropolispm_1": {
+      "Authors": [
+         "Jerry O. Talton",
+         "Yu Lou",
+         "Jared Duke",
+         "Steve Lesser",
+         "Radomir Mech",
+         "Vladlen Koltun"
+      ],
+      "Caption": "A set of young oak trees from a single grammar, produced with the algorithm described in this paper. The trees exhibit natural, realistic structure (top) and spell \u201cSIGGRAPH\u201d when viewed from above (bottom). Zoom in for detail",
+      "Figure #": "8",
+      "Link to Paper": "http://vladlen.info/papers/metropolis.pdf",
+      "Sub-field": "Modeling/Geometry",
+      "Title": "Metropolis Procedural Modeling",
+      "Type": "Name",
+      "Venue": "ToG",
+      "Year": "2011"
+   },
+   "metropolispm_2": {
+      "Authors": [
+         "Jerry O. Talton",
+         "Yu Lou",
+         "Jared Duke",
+         "Steve Lesser",
+         "Radomir Mech",
+         "Vladlen Koltun"
+      ],
+      "Caption": "Acacia trees (left) and willows (right) targeted to the SIGGRAPH logo. Zoom in to see the small branches supporting the thin edges of the crescent shapes",
+      "Figure #": "9",
+      "Link to Paper": "http://vladlen.info/papers/metropolis.pdf",
+      "Sub-field": "Modeling/Geometry",
+      "Title": "Metropolis Procedural Modeling",
+      "Type": "Logo",
+      "Venue": "ToG",
+      "Year": "2011"
+   },
+   "pathreplaybp": {
+      "Authors": [
+         "Delio Vicini",
+         "S\u00e9bastien Speierer",
+         "Wenzel Jakob"
+      ],
+      "Caption": "We optimize the normal map of a glass slab so that the refracted view matches a reference image. Neither biased nor unbiased radiative backpropagation can optimize a perfectly specular surface, hence we compare our method to conventional automatic differentiation (at equal iteration count).",
+      "Figure #": "10",
+      "Link to Paper": "http://rgl.s3.eu-central-1.amazonaws.com/media/papers/Vicini2021PathReplay_2.pdf",
+      "Sub-field": "Rendering",
+      "Title": "Path Replay Backpropagation: Differentiating Light Paths using Constant Memory and Linear Time",
+      "Type": "Logo",
+      "Venue": "SIGGRAPH",
+      "Year": "2021"
+   },
+   "sosmc": {
+      "Authors": [
+         "Daniel Ritchie",
+         "Ben Mildenhall",
+         "Noah D. Goodman",
+         "Pat Hanrahan"
+      ],
+      "Caption": "Using the object avoidance scoring function to make gnarly trees grow around obstacles.",
+      "Figure #": "4",
+      "Link to Paper": "https://dritchie.github.io/pdf/sosmc.pdf",
+      "Sub-field": "Modeling/Geometry",
+      "Title": "Controlling Procedural Modeling Programs with Stochastically-Ordered Sequential Monte Carlo",
+      "Type": "Logo",
+      "Venue": "SIGGRAPH",
+      "Year": "2015"
+   },
+   "sweptvolumes": {
+      "Authors": [
+         "Silvia Sellan",
+         "Noam Aigerman",
+         "Alec Jacobson"
+      ],
+      "Caption": "We capture trajectories with a real VR setup and then sweep different letters\u2019 mesh representations along them.",
+      "Figure #": "16",
+      "Link to Paper": "https://www.dgp.toronto.edu/projects/swept-volumes/swept-volumes-low-res.pdf",
+      "Sub-field": "Modeling/Geometry",
+      "Title": "Swept Volumes via Spacetime Numerical Continuation",
+      "Type": "Name",
+      "Venue": "SIGGRAPH",
+      "Year": "2021"
+   },
+   "teg": {
+      "Authors": [
+         "Sai Bangaru",
+         "Jesse Michel",
+         "Kevin Mu",
+         "Gilbert Bernstein",
+         "Tzu-Mao Li",
+         " Jonathan Ragan-Kelley"
+      ],
+      "Caption": "Guided Perlin textures. We optimize for the parameters of two shaders based on Perlin noise. The shader in (a) uses the Perlin noise value to decide between using a flat gray color and a low-resolution color map. We keep the decision threshold value fixed and optimize for the color map as well as the noise vectors of the Perlin grid. Ignoring the delta contribution leads to an unchanged noise pattern, while our approach produces a noise pattern that adhere to the logo structure. ",
+      "Figure #": "9",
+      "Link to Paper": "https://people.csail.mit.edu/sbangaru/projects/teg-2021/teg-2021.pdf",
+      "Sub-field": "Other",
+      "Title": "Systematically Differentiating Parametric Discontinuities",
+      "Type": "Logo",
+      "Venue": "SIGGRAPH",
+      "Year": "2021"
+   },
+   "viscoelasticmpm_1": {
+      "Authors": [
+         "Haozhe Su",
+         "Tao Xue",
+         "Chengguizi Han",
+         "Chenfanfu Jiang",
+         "Mridul Aanjaneya"
+      ],
+      "Caption": "Our unified constitutive model can simulate both Newtonian and non-Newtonian viscous liquids[, including] object interaction with Newtonian ketchup bunnies.",
+      "Figure #": "1",
+      "Link to Paper": "https://rutgers.box.com/shared/static/8urdpsy1czgtqe6irc9gq53uhgfodf6x.pdf",
+      "Sub-field": "Simulation",
+      "Title": "A Unified Second-Order Accurate in Time MPM Formulation for Simulating Viscoelastic Liquids with Phase Change",
+      "Type": "Name",
+      "Venue": "SIGGRAPH",
+      "Year": "2021"
+   },
+   "viscoelasticmpm_2": {
+      "Authors": [
+         "Haozhe Su",
+         "Tao Xue",
+         "Chengguizi Han",
+         "Chenfanfu Jiang",
+         "Mridul Aanjaneya"
+      ],
+      "Caption": "Our unified constitutive model can simulate both Newtonian and non-Newtonian viscous liquids[, including] 3D printing of shapes.",
+      "Figure #": "1",
+      "Link to Paper": "https://rutgers.box.com/shared/static/8urdpsy1czgtqe6irc9gq53uhgfodf6x.pdf",
+      "Sub-field": "Simulation",
+      "Title": "A Unified Second-Order Accurate in Time MPM Formulation for Simulating Viscoelastic Liquids with Phase Change",
+      "Type": "Logo",
+      "Venue": "SIGGRAPH",
+      "Year": "2021"
+   },
+   "viscoelasticmpm_3": {
+      "Authors": [
+         "Haozhe Su",
+         "Tao Xue",
+         "Chengguizi Han",
+         "Chenfanfu Jiang",
+         "Mridul Aanjaneya"
+      ],
+      "Caption": "(Top) The individual letters of SIGGRAPH were 3D printed (in simulation) using our method that provides a unified framework for thermo-viscoelastic effects. (Bottom) The letters deform differently when dropped on the printer bed, illustrating that the material stiffness depends on the fabrication process. The average Δ𝑡 during simulations is 6 \u00d7 10\u22125s.",
+      "Figure #": "16",
+      "Link to Paper": "https://rutgers.box.com/shared/static/8urdpsy1czgtqe6irc9gq53uhgfodf6x.pdf",
+      "Sub-field": "Simulation",
+      "Title": "A Unified Second-Order Accurate in Time MPM Formulation for Simulating Viscoelastic Liquids with Phase Change",
+      "Type": "Name",
+      "Venue": "SIGGRAPH",
+      "Year": "2021"
+   },
+   "weavecraft": {
+      "Authors": [
+         "Rundong Wu",
+         "Joy Xiaoji Zhang",
+         "Jonathan Leaf",
+         "Xinru Hua",
+         "Ante Qu",
+         "Claire Harvey",
+         "Emily Holtzman",
+         "Joy Ko",
+         "Brooks Hagan",
+         "Doug James",
+         "Fran\u00e7ois Guimbreti\u00e8re",
+         "Steve Marschner"
+      ],
+      "Caption": "Illustration of stenciling. To merge several blocks with a stencil, we first tile every block respectively so that the x and y sizes of the tiled blocks are no smaller than the stencil. Then for each pixel in the stencil, we grab a stack from the corresponding tiled block according to the index value. The merged block is a combination of these stacks.",
+      "Figure #": "8",
+      "Link to Paper": "https://www.cs.cornell.edu/~joyxiaojizhang/files/weavecraft.pdf",
+      "Sub-field": "Fabrication",
+      "Title": "Weavecraft: An Interactive Design and Simulation Tool for 3D Weaving",
+      "Type": "Logo",
+      "Venue": "SIGGRAPH Asia",
+      "Year": "2020"
+   }
+}

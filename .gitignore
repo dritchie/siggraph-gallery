@@ -1,7 +1,6 @@
 images/
 thumbs/
 *.csv
-database.json
 _site/
 
 # ---------------------------------------
