@@ -28,9 +28,6 @@ layout: default
 
         // Stores all the items in the gallery
         var _items = undefined;
-
-        // Stores the current state of the filters
-        var _filterstate = undefined;
     
         // Function called before the popup for media info is displayed
         // We use this to display extra info (e.g. figure caption)
@@ -58,7 +55,7 @@ layout: default
                 }
             }
 
-            // Filter out the ones that don't have the right type
+            // Filter out items that don't have the right type
             var uiBitcode = 0;
             if ($('#checkName').is(':checked')) uiBitcode += 2;
             if ($('#checkLogo').is(':checked')) uiBitcode += 1;
@@ -68,13 +65,23 @@ layout: default
                 return (itemBitcode & uiBitcode) != 0;
             });
 
-            // Record the current state of the filters
-            _filterstate = {};
-            $('.nGY2Navigationbar').children().each(function(index) {
+            // Filter out items that don't match the active tag filters
+            var activeFilters = [];
+            $('#filters').children().each(function(index) {
                 if ($(this).hasClass('nGY2NavFilterSelected')) {
-                    _filterstate[$(this).text()] = true;
+                    activeFilters.push($(this).text().trim());
                 }
             });
+            if (activeFilters.length > 0) {
+                items = items.filter((item) => {
+                    var tags = item.tags.split(' ');
+                    for (const tag of tags) {
+                        if (activeFilters.includes(tag))
+                            return true;
+                    }
+                    return false;
+                });
+            }
 
             // Destroy & re-create the gallery with these new settings
             // (Unfortunately there does not appear to be a way to do this "in place")
@@ -103,25 +110,73 @@ layout: default
                 };
             });
 
+            // Create the filter controls
+            // First, get the complete set of tags
+            var tags = {}
+            _items.forEach((item) => {
+                var taglist = item.tags.split(' ');
+                taglist.forEach((tag) => {
+                    tags[tag] = true;
+                });
+            });
+            tags = Object.keys(tags);
+            tags.sort();
+            tags.splice(tags.indexOf('Other'), 1);
+            tags.push('Other');
+            // Create a control for each tag
+            function makeFilterSelected(filter) {
+                var i = filter.children().first();
+                filter.removeClass('nGY2NavFilterUnselected');
+                filter.addClass('nGY2NavFilterSelected');
+                i.removeClass('nGY2Icon-circle-empty');
+                i.addClass('nGY2Icon-ok');
+                i.css('color', '#fff').css('opacity', '1.0');
+            }
+            function makeFilterUnselected(filter) {
+                var i = filter.children().first();
+                filter.removeClass('nGY2NavFilterSelected');
+                filter.addClass('nGY2NavFilterUnselected');
+                i.removeClass('nGY2Icon-ok');
+                i.addClass('nGY2Icon-circle-empty');
+                i.css('color', '#ddd').css('opacity', '0.3');
+            }
+            tags.forEach((tag) => {
+                $('#filters').append(`<div class="nGY2NavigationbarItem nGY2NavFilterUnselected"><i style="color:#ddd;opacity:0.3;" class="nGY2Icon-circle-empty"></i> ${tag}</div>`);
+                var filter = $('#filters').children().last();
+                $(filter).click(function() {
+                    var that = $(this);
+                    if (that.hasClass('nGY2NavFilterUnselected')) {
+                        makeFilterSelected(that);
+                    } else {
+                        makeFilterUnselected(that);
+                    }
+                    rebuildGallery(false);
+                });
+            });
+            // Create the reset filter button
+            $('#filters').append('<div class="nGY2NavigationbarItem nGY2NavFilterSelectAll"><i class="nGY2Icon-ccw"></i></div>');
+            var reset = $('#filters').children().last();
+            $(reset).click(function() {
+                var someWereSelected = false;
+                $('#filters').children().each(function() {
+                    var that = $(this);
+                    if (!that.hasClass('nGY2NavFilterSelectAll')) {
+                        if (that.hasClass('nGY2NavFilterSelected'))
+                            someWereSelected = true;
+                        makeFilterUnselected(that);
+                    }
+                });
+                if (someWereSelected) {
+                    rebuildGallery(false);
+                }
+            });
+
             // Handle when the user changes the sort option
             $('#sort').change(() => { rebuildGallery(true); });
 
             // Handle when the user changes the type filter options
             $('#checkName').change(() => { rebuildGallery(false); });
             $('#checkLogo').change(() => { rebuildGallery(false); });
-
-            // Whenever the gallery is rebuilt, we restore the state of the filters
-            $('#nanogallery2').on('galleryObjectModelBuilt.nanogallery2', (e) => {
-                // Restore the state of the filters
-                if (_filterstate) {
-                    $('.nGY2Navigationbar').children().each(function(index) {
-                        if (_filterstate[$(this).text()]) {
-                            $(this).click();
-                        }
-                    });
-                    _filterstate = undefined;
-                }
-            });
 
             // Event handler for whenever a lightbox image is displayed.
             // We use this to make the title/description in the toolbar clickable to open to the info box.
@@ -171,6 +226,7 @@ layout: default
                 <label class="form-check-label" for="checkLogo">Logo</label>
             </div>
         </div>
+        <div id="filters" class="nGY2Navigationbar nanogallery_gallerytheme_dark_nanogallery2" style="font-size: 12pt; opacity: 1; display: block;"></div>
         <div class="row">
             <div class="col">
                 <div id="nanogallery2"
@@ -183,8 +239,6 @@ layout: default
                         "gallerySorting": "random",
     
                         "galleryPaginationTopButtons": false,
-                        "galleryFilterTags": true,
-                        "galleryFilterTagsMode": "multiple",
                         "navigationFontSize": "12pt",
     
                         "thumbnailHeight": "250", "thumbnailWidth": "auto",
