@@ -57,8 +57,8 @@ layout: default
 
             // Filter out items that don't have the right type
             var uiBitcode = 0;
-            if ($('#checkName').is(':checked')) uiBitcode += 2;
-            if ($('#checkLogo').is(':checked')) uiBitcode += 1;
+            if ($('#checkName').hasClass('nGY2NavFilterSelected')) uiBitcode += 2;
+            if ($('#checkLogo').hasClass('nGY2NavFilterSelected')) uiBitcode += 1;
             items = items.filter((item) => {
                 var type = item.customData.type;
                 var itemBitcode = (type == 'Name') ? 2 : (type == 'Logo') ? 1 : 3;
@@ -140,18 +140,19 @@ layout: default
                 i.addClass('nGY2Icon-circle-empty');
                 i.css('color', '#ddd').css('opacity', '0.3');
             }
+            function clickFilter() {
+                var that = $(this);
+                if (that.hasClass('nGY2NavFilterUnselected')) {
+                    makeFilterSelected(that);
+                } else {
+                    makeFilterUnselected(that);
+                }
+                rebuildGallery(false);
+            }
             tags.forEach((tag) => {
                 $('#filters').append(`<div class="nGY2NavigationbarItem nGY2NavFilterUnselected"><i style="color:#ddd;opacity:0.3;" class="nGY2Icon-circle-empty"></i> ${tag}</div>`);
                 var filter = $('#filters').children().last();
-                $(filter).click(function() {
-                    var that = $(this);
-                    if (that.hasClass('nGY2NavFilterUnselected')) {
-                        makeFilterSelected(that);
-                    } else {
-                        makeFilterUnselected(that);
-                    }
-                    rebuildGallery(false);
-                });
+                $(filter).click(clickFilter);
             });
             // Create the reset filter button
             $('#filters').append('<div class="nGY2NavigationbarItem nGY2NavFilterSelectAll"><i class="nGY2Icon-ccw"></i></div>');
@@ -175,8 +176,17 @@ layout: default
             $('#sort').change(() => { rebuildGallery(true); });
 
             // Handle when the user changes the type filter options
-            $('#checkName').change(() => { rebuildGallery(false); });
-            $('#checkLogo').change(() => { rebuildGallery(false); });
+            $('#checkName').click(clickFilter);
+            $('#checkLogo').click(clickFilter);
+            $('#resetTypes').click(() => {
+                var needRefresh =
+                    $('#checkName').hasClass('nGY2NavFilterUnselected') ||
+                    $('#checkLogo').hasClass('nGY2NavFilterUnselected');
+                makeFilterSelected($('#checkName'));
+                makeFilterSelected($('#checkLogo'));
+                if (needRefresh)
+                    rebuildGallery(false);
+            });
 
             // Event handler for whenever a lightbox image is displayed.
             // We use this to make the title/description in the toolbar clickable to open to the info box.
@@ -217,13 +227,10 @@ layout: default
                 <option>Newest first</option>
                 <option>Oldest first</option>
             </select>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" value="" id="checkName" checked>
-                <label class="form-check-label" for="checkName">Name</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" value="" id="checkLogo" checked>
-                <label class="form-check-label" for="checkLogo">Logo</label>
+            <div id="types" class="nGY2Navigationbar nanogallery_gallerytheme_dark_nanogallery2" style="font-size: 12pt; opacity: 1; display: inline;">
+                <div id="checkName" class="nGY2NavigationbarItem nGY2NavFilterSelected"><i style="color:#fff;" class="nGY2Icon-ok"></i>Name</div>
+                <div id="checkLogo" class="nGY2NavigationbarItem nGY2NavFilterSelected"><i style="color:#fff;" class="nGY2Icon-ok"></i>Logo</div>
+                <div id="resetTypes" class="nGY2NavigationbarItem nGY2NavFilterSelectAll"><i class="nGY2Icon-ccw"></i></div>
             </div>
         </div>
         <div id="filters" class="nGY2Navigationbar nanogallery_gallerytheme_dark_nanogallery2" style="font-size: 12pt; opacity: 1; display: block;"></div>
