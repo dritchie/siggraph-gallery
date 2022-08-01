@@ -53,6 +53,8 @@ a:hover {
 
 #filters {
     margin-left: 6pt;
+    margin-top: 0px;
+    padding-top: 0px;
 }
 
 #sort {
