@@ -28,6 +28,13 @@ layout: default
 
         // Stores all the items in the gallery
         var _items = undefined;
+
+        // The difference in height between the top-level gallery DOM element and
+        // the nGY2Gallery object (used for some dynamic resizing stuff)
+        var _heightgap = undefined;
+
+        // Flag indicating whether we're currently rebuilding the gallery
+        var _isRebuilding = undefined;
     
         // Function called before the popup for media info is displayed
         // We use this to display extra info (e.g. figure caption)
@@ -43,6 +50,8 @@ layout: default
         }
 
         function rebuildGallery(sortChanged) {
+            _isRebuilding = true;
+
             var selectVal = $('#sort').val();
 
             // Sort items according to sort type
@@ -92,7 +101,11 @@ layout: default
             } else {
                 settings.gallerySorting = '';
             }
+            // We preserve the height of the old gallery while the rebuild is happening,
+            //    so it doesn't suddenly drop to zero height for a second.
+            var oldHeight = $('#nanogallery2').height();
             $('#nanogallery2').nanogallery2('destroy');
+            $('#nanogallery2').height(oldHeight);
             $('#nanogallery2').nanogallery2(settings);
         }
 
@@ -195,6 +208,16 @@ layout: default
                 button.addClass('ngEvent');
                 button.attr('data-ngy2action', 'info');
                 button.attr('title', 'Click for more info about this figure')
+            });
+
+            // Dynamic resizing in response to gallery reload
+            $('#nanogallery2').on('galleryDisplayed.nanogallery2', (e) => {
+                if (_heightgap == undefined) {
+                    _heightgap = $('#nanogallery2').height() - $('.nGY2Gallery').height();
+                } else if (_isRebuilding) {
+                    $('#nanogallery2').height($('.nGY2Gallery').height() + _heightgap);
+                    _isRebuilding = false;
+                }
             });
 
         };
