@@ -92,6 +92,14 @@ layout: default
                 });
             }
 
+            // Filter out the items that don't match the search string
+            var searchString = $('#searchtext').val().toLowerCase();
+            if (searchString != '') {
+                items = items.filter((item) => {
+                    return item.title.toLowerCase().includes(searchString);
+                });
+            }
+
             // Destroy & re-create the gallery with these new settings
             // (Unfortunately there does not appear to be a way to do this "in place")
             var settings = JSON.parse($('#nanogallery2').attr('data-nanogallery2'));
@@ -201,6 +209,13 @@ layout: default
                     rebuildGallery(false);
             });
 
+            // Handle when user clicks the search button
+            $('#searchbutton').click(() => { rebuildGallery(false); });
+            $('#searchtext').keypress((event) => {
+                if (event.key == 'Enter')
+                    rebuildGallery(false);
+            });
+
             // Event handler for whenever a lightbox image is displayed.
             // We use this to make the title/description in the toolbar clickable to open to the info box.
             $('#nanogallery2').on('lightboxImageDisplayed.nanogallery2', (e) => {
@@ -219,7 +234,6 @@ layout: default
                     _isRebuilding = false;
                 }
             });
-
         };
     </script>
 </head>
@@ -244,16 +258,26 @@ layout: default
     <hr/>
 
     <div class="row section">
-        <div id="controls">
-            <select id="sort">
-                <option>Sort randomly</option>
-                <option>Newest first</option>
-                <option>Oldest first</option>
-            </select>
-            <div id="types" class="nGY2Navigationbar nanogallery_gallerytheme_dark_nanogallery2" style="font-size: 12pt; opacity: 1; display: inline;">
-                <div id="checkName" class="nGY2NavigationbarItem nGY2NavFilterSelected"><i style="color:#fff;" class="nGY2Icon-ok"></i>Name</div>
-                <div id="checkLogo" class="nGY2NavigationbarItem nGY2NavFilterSelected"><i style="color:#fff;" class="nGY2Icon-ok"></i>Logo</div>
-                <div id="resetTypes" class="nGY2NavigationbarItem nGY2NavFilterSelectAll"><i class="nGY2Icon-ccw"></i></div>
+        <div class="row">
+            <div class="col-auto">
+                <select id="sort">
+                    <option>Sort randomly</option>
+                    <option>Newest first</option>
+                    <option>Oldest first</option>
+                </select>
+            </div>
+            <div class="col-auto">
+                <div id="search" class="nGY2Navigationbar nanogallery_gallerytheme_dark_nanogallery2" style="font-size: 12pt; opacity: 1; display: inline;">
+                    <input id="searchtext" type="text" placeholder="Search in paper titles">
+                    <div id="searchbutton" class="nGY2NavigationbarItem nGY2NavFilterSelected" type="submit">Search</div>
+                </div>
+            </div>
+            <div class="col-auto">
+                <div id="types" class="nGY2Navigationbar nanogallery_gallerytheme_dark_nanogallery2" style="font-size: 12pt; opacity: 1; display: inline;">
+                    <div id="checkName" class="nGY2NavigationbarItem nGY2NavFilterSelected"><i style="color:#fff;" class="nGY2Icon-ok"></i>Name</div>
+                    <div id="checkLogo" class="nGY2NavigationbarItem nGY2NavFilterSelected"><i style="color:#fff;" class="nGY2Icon-ok"></i>Logo</div>
+                    <div id="resetTypes" class="nGY2NavigationbarItem nGY2NavFilterSelectAll"><i class="nGY2Icon-ccw"></i></div>
+                </div>
             </div>
         </div>
         <div id="filters" class="nGY2Navigationbar nanogallery_gallerytheme_dark_nanogallery2" style="font-size: 12pt; opacity: 1; display: block;"></div>
@@ -337,6 +361,7 @@ layout: default
 
             <p>
                 This website is built atop the excellent <a target="_blank" href="https://nanogallery2.nanostudio.org/">nanogallery2</a> library.
+                The source code is available on <a target="_blank" href="https://github.com/dritchie/siggraph-gallery">Github</a>.
             </p>
         </div>
     </div>
