@@ -55,6 +55,22 @@ a:hover {
     margin-left: 6pt;
 }
 
+#sort {
+    font-size: 12pt;
+    color: #fff;
+    background: #111;
+    border-radius: 4px;
+    border: none;
+    margin-left: 0px;
+    margin-right: 2em;
+    padding: 7px 10px;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+}
+
 
 
 /* Modifications of nanogallery2 stuff */
