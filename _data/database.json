@@ -31,6 +31,79 @@
       "Venue": "SIGGRAPH Asia",
       "Year": "2020"
    },
+   "dronepaint": {
+      "Authors": [
+         "Valerii Serpiva",
+         "Ekaterina Karmanova",
+         "Aleksey Fedoseev",
+         "Stepan Perminov",
+         "Dzmitry Tsetserukou"
+      ],
+      "Caption": "a) View of user screen. Drawing trajectory by hand and gesture recognition. b) Long exposure light painting of \u201cSiggraph\u201d logo by drone. c) Single swarm agent with the LED circle.",
+      "Figure #": "1",
+      "Link to Paper": "https://dl.acm.org/doi/fullHtml/10.1145/3450550.3465349",
+      "Sub-field": "Other",
+      "Title": "DronePaint: Swarm Light Painting with DNN-based Gesture Recognition",
+      "Type": "Name",
+      "Venue": "SIGGRAPH (Emerging Technologies)",
+      "Year": "2021"
+   },
+   "eikonal": {
+      "Authors": [
+         "Ivo Ihrke",
+         "Gernot Ziegler",
+         "Art Tevs",
+         "Christian Theobalt",
+         "Marcus Magnor",
+         "Hans-Peter Seidel"
+      ],
+      "Caption": "Glass block with embedded SIGGRAPH logo of different refraction and attenuation, 15.5 fps, (5 objects in scene)",
+      "Figure #": "8",
+      "Link to Paper": "https://resources.mpi-inf.mpg.de/EikonalRendering/pdf/sig07.pdf",
+      "Sub-field": "Rendering",
+      "Title": "Eikonal Rendering: Efficient Light Transport in Refractive Objects",
+      "Type": "Logo",
+      "Venue": "SIGGRAPH",
+      "Year": "2007"
+   },
+   "fabricformwork": {
+      "Authors": [
+         "Xiaoting Zhang",
+         "Guoxin Fang",
+         "Melina Skouras",
+         "Gwenda Gieseler",
+         "Charlie C.L. Wang",
+         "Emily Whiting"
+      ],
+      "Caption": "Examples of optimized letter models. (Yellow) Optimized shape computed by our framework. (Blue) Deformed shape with unoptimized panels shown for comparison. (Multicolor) Design configuration with panels displayed in different colors and rotated according to fabrication orientation",
+      "Figure #": "7",
+      "Link to Paper": "https://cs-people.bu.edu/whiting/resources/pubs/Zhang2019_FabricFormwork.pdf",
+      "Sub-field": "Fabrication",
+      "Title": "Computational Design of Fabric Formwork",
+      "Type": "Name",
+      "Venue": "SIGGRAPH",
+      "Year": "2019"
+   },
+   "fluorescence": {
+      "Authors": [
+         "Jongho Lee",
+         "Jenu Varghese Chacko",
+         "Bing Dai",
+         "Syed Azer Reza",
+         "Abdul Kader Sagar",
+         "Kevin W. Eliceiri",
+         "Andreas Velten",
+         "Mohit Gupta"
+      ],
+      "Caption": "Visual comparisons of fluorescence lifetime images. (a) Solid fluorescent samples with two lifetimes were made using the fluorescent tape (foreground) and the fluorescent slide (background). The fluorescence lifetime images were obtained by two coding schemes, (b) SinusoidSinusoid and (c) Expo-Square. The boundaries between the foreground and background are invisible with Sinusoid-Sinusoid but clear with ExpoSquare.",
+      "Figure #": "16",
+      "Link to Paper": "https://wisionlab.com/wp-content/uploads/2019/06/ToG19_FLIM_Jongho_Combined.pdf",
+      "Sub-field": "Imaging/Video",
+      "Title": "Coding Scheme Optimization for Fast Fluorescence Lifetime Imaging",
+      "Type": "Logo",
+      "Venue": "ToG",
+      "Year": "2019"
+   },
    "kelvintransform": {
       "Authors": [
          "Mohammad Sina Nabizadeh",
@@ -45,6 +118,22 @@
       "Type": "Name",
       "Venue": "SIGGRAPH",
       "Year": "2021"
+   },
+   "laplaciangrowth": {
+      "Authors": [
+         "Theodore Kim",
+         "Jason Sewall",
+         "Avneesh Sud",
+         "Ming Lin"
+      ],
+      "Caption": "b) 2D Fractal forms generated with our algorithm. The SIGGRAPH logo is a frame from a short animation featured in the SIGGRAPH 2005 Electronic Theater.",
+      "Figure #": "5",
+      "Link to Paper": "http://gamma.cs.unc.edu/FRAC/laplacian_large.pdf",
+      "Sub-field": "Simulation",
+      "Title": "Fast Simulation of Laplacian Growth",
+      "Type": "Logo",
+      "Venue": "Computer Graphics & Applications",
+      "Year": "2007"
    },
    "metropolispm_1": {
       "Authors": [
@@ -97,6 +186,40 @@
       "Venue": "SIGGRAPH",
       "Year": "2021"
    },
+   "phasornoise": {
+      "Authors": [
+         "Thibault Tricard",
+         "Semyon Efremov",
+         "C\u00e9dric Zanni",
+         "Fabrice Neyret",
+         "Jon\u00e0s Mart\u00ednez",
+         "Sylvain Lefebvre "
+      ],
+      "Caption": "Columns, from left to right: Control fields, frequency control, PWM \u2018width\u2019 control, orientation control, all together",
+      "Figure #": "15",
+      "Link to Paper": "https://hal.archives-ouvertes.fr/hal-02118508/document",
+      "Sub-field": "Other",
+      "Title": "Procedural Phasor Noise",
+      "Type": "Logo",
+      "Venue": "SIGGRAPH",
+      "Year": "2019"
+   },
+   "saliencysummary": {
+      "Authors": [
+         "Radhakrishna Achanta",
+         "Appu Shaji",
+         "Pascal Fua",
+         "Sabine S\u00fcsstrunk"
+      ],
+      "Caption": "Database saliency automatically finds the most salient images from thousands of images for creating interesting mosaics (eg. A and B) or collages (eg. C and D).",
+      "Figure #": "1",
+      "Link to Paper": "https://www.epfl.ch/labs/ivrl/research/saliency/database-saliency-and-image-summaries/",
+      "Sub-field": "Imaging/Video",
+      "Title": "Image Summaries using Database Saliency",
+      "Type": "Logo",
+      "Venue": "SIGGRAPH Asia (Posters)",
+      "Year": "2009"
+   },
    "sosmc": {
       "Authors": [
          "Daniel Ritchie",
@@ -112,6 +235,22 @@
       "Type": "Logo",
       "Venue": "SIGGRAPH",
       "Year": "2015"
+   },
+   "specklestats": {
+      "Authors": [
+         "Chen Bar",
+         "Marina Alterman",
+         "Ioannis Gkioulekas",
+         "Anat Levin"
+      ],
+      "Caption": "Replication of a seeing through scattering layer application of (Katz et al. 2014). A set of illuminators with the arrangement at the top of (a) generates a semi-random speckle image, yet the auto-correlation of the speckle image is similar to the auto-correlation of the original illuminators and hence the illuminators can be recovered from the speckle image using phase retrieval algorithms. In (b,c) we show the auto-correlation and the corresponding reconstruction for different material parameters simulated with our speckle renderer. The success of the algorithm depends on the validity of the memory effect in this angular range for each type of material.",
+      "Figure #": "12",
+      "Link to Paper": "https://arxiv.org/pdf/1901.06931.pdf",
+      "Sub-field": "Rendering",
+      "Title": "A Monte Carlo Framework for Rendering Speckle Statistics in Scattering Media",
+      "Type": "Logo",
+      "Venue": "SIGGRAPH",
+      "Year": "2019"
    },
    "sweptvolumes": {
       "Authors": [
@@ -144,6 +283,21 @@
       "Title": "Systematically Differentiating Parametric Discontinuities",
       "Type": "Logo",
       "Venue": "SIGGRAPH",
+      "Year": "2021"
+   },
+   "terafoils": {
+      "Authors": [
+         "Kenta Yamamoto",
+         "Kosaku Namikawa",
+         "Yoichi Ochiai"
+      ],
+      "Caption": "Left: holographic tag card of TeraFoils. Center: experimental setup with sub-terahertz detector array and subterahertz source. Right: hologram generated by the proposed method, simulated result, and captured result (SIGGRAPH logo).",
+      "Figure #": "1",
+      "Link to Paper": "https://digitalnature.slis.tsukuba.ac.jp/wp-content/uploads/2021/07/2021_SIGGRAPH_Posters_TeraFoils-15.pdf",
+      "Sub-field": "Fabrication",
+      "Title": "TeraFoils: Design and Rapid Fabrication Techniques for Binary Holographic Structures in the Terahertz Region",
+      "Type": "Logo",
+      "Venue": "SIGGRAPH (Posters)",
       "Year": "2021"
    },
    "viscoelasticmpm_1": {
@@ -188,7 +342,7 @@
          "Chenfanfu Jiang",
          "Mridul Aanjaneya"
       ],
-      "Caption": "(Top) The individual letters of SIGGRAPH were 3D printed (in simulation) using our method that provides a unified framework for thermo-viscoelastic effects. (Bottom) The letters deform differently when dropped on the printer bed, illustrating that the material stiffness depends on the fabrication process. The average Δ𝑡 during simulations is 6 \u00d7 10\u22125s.",
+      "Caption": "(Top) The individual letters of SIGGRAPH were 3D printed (in simulation) using our method that provides a unified framework for thermo-viscoelastic effects. (Bottom) The letters deform differently when dropped on the printer bed, illustrating that the material stiffness depends on the fabrication process. The average delta t during simulations is 6 \u00d7 10\u22125s.",
       "Figure #": "16",
       "Link to Paper": "https://rutgers.box.com/shared/static/8urdpsy1czgtqe6irc9gq53uhgfodf6x.pdf",
       "Sub-field": "Simulation",
