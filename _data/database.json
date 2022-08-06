@@ -1,4 +1,20 @@
 {
+   "adelta": {
+      "Authors": [
+         "Yuting Yang",
+         "Connelly Barnes",
+         "Andrew Adams",
+         "Adam Finkelstein"
+      ],
+      "Caption": "Our compiler automatically differentiates discontinuous shader programs by extending reverse-mode automatic differentiation (AD) with novel differentiation rules. This allows efficient gradient-based optimization methods to optimize program parameters to best match a target (a), which is difficult to do by hand (b). Our pipeline takes as input a shader program initialized with configurations (c) that look very different from the reference, and converges to be nearly visually identical (d) within 15s. The compiler can also output the shader program with optimized parameters to GLSL, which allows programmers to interactively edit or animate the shader, such as adding texture (e). The optimized parameters can also be combined with other shader programs (e.g. b) to leverage their visual appearance while keeping the geometry close to the reference. For animation results please refer to our supplemental video.",
+      "Figure #": "1",
+      "Link to Paper": "https://www.cs.princeton.edu/~yutingy/docs/siggraph_2022.pdf",
+      "Sub-field": "Other",
+      "Title": "A𝛿:: Autodiff for Discontinuous Programs \u2013 Applied to Shaders",
+      "Type": "Logo",
+      "Venue": "SIGGRAPH",
+      "Year": "2022"
+   },
    "antithetic": {
       "Authors": [
          "Cheng Zhang",
@@ -99,6 +115,24 @@
       "Venue": "SIGGRAPH",
       "Year": "2019"
    },
+   "filamentplasma": {
+      "Authors": [
+         "Marcel Padilla",
+         "Oliver Gross",
+         "Felix Kn\u00f6ppel",
+         "Albert Chern",
+         "Ulrich Pinkall",
+         "Peter Schr\u00f6der"
+      ],
+      "Caption": "An artistically designed flux map (botom) and the corresponding solar atmosphere (top). An animated version is provided in the supplementary material.",
+      "Figure #": "2",
+      "Link to Paper": "https://www3.math.tu-berlin.de/geometrie/wp_padilla/wp-content/uploads/2022/05/Filament_Based_Plasma.pdf",
+      "Sub-field": "Simulation",
+      "Title": "Filament Based Plasma",
+      "Type": "Logo",
+      "Venue": "SIGGRAPH",
+      "Year": "2022"
+   },
    "fluorescence": {
       "Authors": [
          "Jongho Lee",
@@ -198,6 +232,23 @@
       "Type": "Logo",
       "Venue": "ToG",
       "Year": "2017"
+   },
+   "magnetoelastic": {
+      "Authors": [
+         "Xuwen Chen",
+         "Xingyu Ni",
+         "Bo Zhu",
+         "Bin Wang",
+         "Baoquan Chen"
+      ],
+      "Caption": "SIGGRAPH banner. The eight letters are individually optimized as in the right of Figure 9b, and then their optimized material properties are assembled to form the banner.",
+      "Figure #": "8",
+      "Link to Paper": "https://dl.acm.org/doi/abs/10.1145/3528223.3530142",
+      "Sub-field": "Simulation",
+      "Title": "Simulation and optimization of magnetoelastic thin shells",
+      "Type": "Name",
+      "Venue": "SIGGRAPH",
+      "Year": "2022"
    },
    "metropolispm_1": {
       "Authors": [
