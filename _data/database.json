@@ -10,7 +10,7 @@
       "Figure #": "1",
       "Link to Paper": "https://www.cs.princeton.edu/~yutingy/docs/siggraph_2022.pdf",
       "Sub-field": "Other",
-      "Title": "A𝛿:: Autodiff for Discontinuous Programs \u2013 Applied to Shaders",
+      "Title": "A𝛿: Autodiff for Discontinuous Programs \u2013 Applied to Shaders",
       "Type": "Logo",
       "Venue": "SIGGRAPH",
       "Year": "2022"
@@ -249,6 +249,20 @@
       "Type": "Name",
       "Venue": "SIGGRAPH",
       "Year": "2022"
+   },
+   "manyworlds": {
+      "Authors": [
+         "Christopher D. Twigg",
+         "Doug L. James"
+      ],
+      "Caption": "Spelling SIGGRAPH: Using our parallel refinement with spatial queries and metrics enables a user to generate this animation spelling out \u201cSIGGRAPH\u201d from an arbitrarily chosen starting configuration.",
+      "Figure #": "1",
+      "Link to Paper": "http://graphics.cs.cmu.edu/projects/mwb/manyWorldsBrowsing.pdf",
+      "Sub-field": "Simulation",
+      "Title": "Many-Worlds Browsing for Control of Multibody Dynamics",
+      "Type": "Name",
+      "Venue": "SIGGRAPH",
+      "Year": "2007"
    },
    "metropolispm_1": {
       "Authors": [
