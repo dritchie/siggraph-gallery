@@ -531,6 +531,22 @@
       "Venue": "SIGGRAPH (Posters)",
       "Year": "2021"
    },
+   "tilingnn": {
+      "Authors": [
+         "Hao Xu",
+         "Ka-Hei Hui",
+         "Chi-Wing Fu",
+         "Hao Zhang"
+      ],
+      "Caption": "Our self-supervised neural network, TilinGNN, produces tiling results in time roughly linear to the number of candidate tile locations, significantly outperforming traditional combinatorial search methods. The average runtime of our network for tiling a character is only 25.71s. The character shapes to be tiled are shown in grey and different types of tiles are displayed using different colors (note that mirror reflections count as different tile types)",
+      "Figure #": "",
+      "Link to Paper": "https://xuhaocuhk.github.io/projects/TilinGnn/xu-2020-TilinGnn.pdf",
+      "Sub-field": "Modeling/Geometry",
+      "Title": "TilinGNN: Learning to Tile with Self-Supervised Graph Neural Network",
+      "Type": "Name",
+      "Venue": "SIGGRAPH",
+      "Year": "2020"
+   },
    "viscoelasticmpm_1": {
       "Authors": [
          "Haozhe Su",
