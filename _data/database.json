@@ -31,6 +31,25 @@
       "Venue": "SIGGRAPH",
       "Year": "2021"
    },
+   "calligrams": {
+      "Authors": [
+         "Changqing Zou",
+         "Junjie Cao",
+         "Warunika Ranaweera",
+         "Ibraheem Alhashim",
+         "Ping Tan",
+         "Alla Sheffer",
+         " Hao Zhang"
+      ],
+      "Caption": "A gallery of compact calligrams obtained by our method on input shapes obtained via Google image search.",
+      "Figure #": "14",
+      "Link to Paper": "https://www.cs.sfu.ca/~haoz/pubs/zou_sig16_calli.pdf",
+      "Sub-field": "Modeling/Geometry",
+      "Title": "Legible Compact Calligrams",
+      "Type": "Name",
+      "Venue": "SIGGRAPH",
+      "Year": "2016"
+   },
    "diffusionhalftone": {
       "Authors": [
          "Alan Brunton",
@@ -539,7 +558,7 @@
          "Hao Zhang"
       ],
       "Caption": "Our self-supervised neural network, TilinGNN, produces tiling results in time roughly linear to the number of candidate tile locations, significantly outperforming traditional combinatorial search methods. The average runtime of our network for tiling a character is only 25.71s. The character shapes to be tiled are shown in grey and different types of tiles are displayed using different colors (note that mirror reflections count as different tile types)",
-      "Figure #": "",
+      "Figure #": "1",
       "Link to Paper": "https://xuhaocuhk.github.io/projects/TilinGnn/xu-2020-TilinGnn.pdf",
       "Sub-field": "Modeling/Geometry",
       "Title": "TilinGNN: Learning to Tile with Self-Supervised Graph Neural Network",
