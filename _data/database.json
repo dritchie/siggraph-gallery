@@ -391,6 +391,25 @@
       "Venue": "SIGGRAPH",
       "Year": "2018"
    },
+   "onenoise": {
+      "Authors": [
+         "Arman Maesumi",
+         "Dylan Hu",
+         "Krishi Saripalli",
+         "Vladimir G. Kim",
+         "Matthew Fisher",
+         "S\u00f6ren Pirk",
+         "Daniel Ritchie"
+      ],
+      "Caption": "Our method enables the synthesis of a wide range of noise patterns with spatially-varying characteristics. Here we show the flexibility of our unified noise model, allowing one to art-direct their noise in a granular fashion. Our model creates semantically meaningful interpolations between noise configurations; above we see the Siggraph logo written with hay fibers that are nested inside of Damascus steel striations\u2013 the scale and distortion of the steel pattern naturally interpolates into a denser pattern before transitioning into fibers. We also show renderings of a clay shader that incorporates our spatially-varying noise patterns. The first three images make use of class-interpolated noise, the final image uses parameter-interpolated noise. Please zoom into the figures for full visual detail.",
+      "Figure #": "1",
+      "Link to Paper": "https://armanmaesumi.github.io/onenoise/",
+      "Sub-field": "Imaging/Video",
+      "Title": "One Noise to Rule Them All: Learning a Unified Model of Spatially-Varying Noise Patterns",
+      "Type": "Both",
+      "Venue": "SIGGRAPH",
+      "Year": "2024"
+   },
    "pathreplaybp": {
       "Authors": [
          "Delio Vicini",
