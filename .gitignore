@@ -2,6 +2,7 @@ images/
 thumbs/
 *.csv
 _site/
+.jekyll-cache
 
 # ---------------------------------------
 
