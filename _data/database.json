@@ -375,6 +375,22 @@
       "Venue": "ToG",
       "Year": "2011"
    },
+   "minkowski": {
+      "Authors": [
+         "Ji\u0159\u00ed Minar\u010d\u00edk",
+         "Sam Estep",
+         "Wode Ni",
+         "Keenan Crane"
+      ],
+      "Caption": "Minkowski penalties provide robust enforcement of general geometric predicates, for a wide variety of shapes. Here we highlight, from left to right: (S) glyph placement with precise padding, (I) nested containment, (GG) successful optimization from a highly infeasible state, (R) high-quality packing and boundary alignment, (A) joint constraint enforcement and energy optimization, (P) constraint enforcement for shapes that do not have a well-defined inside/outside, and (H) no-overlap constraints integrated with graph layout. In each case (except (I)), shapes are confined to a nonconvex region.",
+      "Figure #": "1",
+      "Link to Paper": "https://www.cs.cmu.edu/~woden/assets/siggraph-24-minkowski.pdf",
+      "Sub-field": "Modeling/Geometry",
+      "Title": "Minkowski Penalties: Robust Differentiable Constraint Enforcement for Vector Graphics",
+      "Type": "Name",
+      "Venue": "SIGGRAPH",
+      "Year": "2024"
+   },
    "multireflectors": {
       "Authors": [
          "Kaisei Sakurai",
