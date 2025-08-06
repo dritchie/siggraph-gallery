@@ -10,7 +10,7 @@
       "Figure #": "1",
       "Link to Paper": "https://www.cs.princeton.edu/~yutingy/docs/siggraph_2022.pdf",
       "Sub-field": "Other",
-      "Title": "A𝛿: Autodiff for Discontinuous Programs \u2013 Applied to Shaders",
+      "Title": "A: Autodiff for Discontinuous Programs \u2013 Applied to Shaders",
       "Type": "Logo",
       "Venue": "SIGGRAPH",
       "Year": "2022"
@@ -30,6 +30,25 @@
       "Type": "Logo",
       "Venue": "SIGGRAPH",
       "Year": "2021"
+   },
+   "assetdropper": {
+      "Authors": [
+         "Lanjiong Li",
+         "Guanhua Zhao",
+         "Lingting Zhu",
+         "Zeyu Cai",
+         "Lequan Yu",
+         "Jian Zhang",
+         "Zeyu Wang"
+      ],
+      "Caption": "The application scenarios of AssetDropper, a novel model designed to extract assets from user-specified image regions. The extracted assets can seamlessly be applied to various downstream tasks in design and visualization workflows, e.g., 2D mockup creation and 3D model texturing.",
+      "Figure #": "1",
+      "Link to Paper": "https://assetdropper.github.io/",
+      "Sub-field": "Imaging/Video",
+      "Title": "AssetDropper: Asset Extraction via Diffusion Models with Reward-Driven Optimization",
+      "Type": "Logo",
+      "Venue": "SIGGRAPH",
+      "Year": "2025"
    },
    "calligrams": {
       "Authors": [
