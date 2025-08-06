@@ -16,21 +16,6 @@ def config():
             __config = json.load(f)
     return __config
 
-def loadjson():
-    dirPath = os.path.dirname(os.path.abspath(__file__))
-    filename = os.path.join(dirPath, '_data', 'database.json')
-    if not os.path.exists(filename):
-        return {}
-    else:
-        with open(filename) as f:
-            return json.load(f)
-
-def savejson(jsonData):
-    dirPath = os.path.dirname(os.path.abspath(__file__))
-    filename = os.path.join(dirPath, '_data', 'database.json')
-    with open(filename, 'w') as f:
-        json.dump(jsonData, f, sort_keys=True, indent=3)
-
 def strip_emojis(text):
     emoji_pattern = re.compile(
         "["
@@ -48,6 +33,21 @@ def strip_emojis(text):
     )
     return emoji_pattern.sub(r'', text)
 
+def loadjson():
+    dirPath = os.path.dirname(os.path.abspath(__file__))
+    filename = os.path.join(dirPath, '_data', 'database.json')
+    if not os.path.exists(filename):
+        return {}
+    else:
+        with open(filename) as f:
+            return json.load(f)
+
+def savejson(jsonData):
+    dirPath = os.path.dirname(os.path.abspath(__file__))
+    filename = os.path.join(dirPath, '_data', 'database.json')
+    with open(filename, 'w') as f:
+        json.dump(jsonData, f, sort_keys=True, indent=3)
+
 def csv2json(csvFilename):
     assert os.path.exists(csvFilename)
     jsonData = {}
@@ -56,8 +56,8 @@ def csv2json(csvFilename):
         for row in reader:
             key = row['Key']
             entry = dict(row)
-            entry['Authors'] = entry['Authors'].split(',')
             entry['Title'] = strip_emojis(entry['Title'])
+            entry['Authors'] = entry['Authors'].split(',')
             del entry['Key']
             jsonData[key] = entry
     return jsonData
@@ -71,6 +71,7 @@ def update(csvFilename):
     for key in newJson:
         if not key in currJson:
             newEntries[key] = newJson[key]
+            currJson[key] = newJson[key] 
 
     if len(newEntries) == 0:
         print('No new entries detected; exiting')
@@ -103,7 +104,7 @@ def update(csvFilename):
     
     # Save the new entries to disk as JSON
     print('Saving new entries to database.json...')
-    savejson(newJson)
+    savejson(currJson)
 
     print('DONE')
 
