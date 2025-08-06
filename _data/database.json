@@ -637,6 +637,23 @@
       "Venue": "SIGGRAPH",
       "Year": "2020"
    },
+   "vdac": {
+      "Authors": [
+         "Ali Mahdavi-Amiri",
+         "Fenggen Yu",
+         "Haisen Zhao",
+         "Adriana Schulz",
+         "Hao Zhang"
+      ],
+      "Caption": "SIGGRAPH text is carved using our method. We have added a buffer around letters to avoid collision with the text.",
+      "Figure #": "14",
+      "Link to Paper": "https://grail.cs.washington.edu/wp-content/uploads/2021/03/madhavi-amiri2020vvd.pdf",
+      "Sub-field": "Fabrication",
+      "Title": "VDAC: Volume Decompose-and-Carve for Subtractive Manufacturing",
+      "Type": "Name",
+      "Venue": "SIGGRAPH Asia",
+      "Year": "2020"
+   },
    "vertexmerging": {
       "Authors": [
          "Iliyan Georgiev",
