@@ -4,6 +4,7 @@ import csv
 import json
 import os
 from PIL import Image
+import re
 
 __config = None
 def config():
@@ -30,6 +31,23 @@ def savejson(jsonData):
     with open(filename, 'w') as f:
         json.dump(jsonData, f, sort_keys=True, indent=3)
 
+def strip_emojis(text):
+    emoji_pattern = re.compile(
+        "["
+        "\U0001F600-\U0001F64F"  # Emoticons
+        "\U0001F300-\U0001F5FF"  # Symbols & Pictographs
+        "\U0001F680-\U0001F6FF"  # Transport & Map Symbols
+        "\U0001F1E0-\U0001F1FF"  # Flags
+        "\U00002700-\U000027BF"  # Dingbats
+        "\U0001F900-\U0001F9FF"  # Supplemental Symbols and Pictographs
+        "\U00002600-\U000026FF"  # Misc symbols
+        "\U0001FA70-\U0001FAFF"  # Symbols and Pictographs Extended-A
+        "\U000025A0-\U000025FF"  # Geometric Shapes
+        "]+",
+        flags=re.UNICODE
+    )
+    return emoji_pattern.sub(r'', text)
+
 def csv2json(csvFilename):
     assert os.path.exists(csvFilename)
     jsonData = {}
@@ -39,6 +57,7 @@ def csv2json(csvFilename):
             key = row['Key']
             entry = dict(row)
             entry['Authors'] = entry['Authors'].split(',')
+            entry['Title'] = strip_emojis(entry['Title'])
             del entry['Key']
             jsonData[key] = entry
     return jsonData
