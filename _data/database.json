@@ -246,6 +246,23 @@
       "Venue": "SIGGRAPH Asia",
       "Year": "2016"
    },
+   "inversetiling": {
+      "Authors": [
+         "Rulin Chen",
+         "Xuyang Ma",
+         "Praveer Tewari",
+         "Chi-Wing Fu",
+         "Peng Song"
+      ],
+      "Caption": "(Supplementary) A tiling result produced by our approach on an input domain SIGGRAPH with 8 disjoint letters.",
+      "Figure #": "3",
+      "Link to Paper": "https://sutd-cgl.github.io/supp/Publication/projects/2025-SIGAsia-InverseTiling/index.html",
+      "Sub-field": "Modeling/Geometry",
+      "Title": "Inverse Tiling of 2D Finite Domains",
+      "Type": "Name",
+      "Venue": "SIGGRAPH Asia",
+      "Year": "2025"
+   },
    "kelvintransform": {
       "Authors": [
          "Mohammad Sina Nabizadeh",
