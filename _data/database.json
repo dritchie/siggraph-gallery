@@ -246,6 +246,19 @@
       "Venue": "SIGGRAPH Asia",
       "Year": "2016"
    },
+   "hiddensurf": {
+      "Authors": [
+         "Wm Randolph Franklin"
+      ],
+      "Caption": "1,470 spheres in a regular arrangement, with hidden lines removed",
+      "Figure #": "3",
+      "Link to Paper": "https://dl.acm.org/doi/10.1145/965105.807480",
+      "Sub-field": "Rendering",
+      "Title": "A linear time exact hidden surface algorithm",
+      "Type": "Name",
+      "Venue": "SIGGRAPH",
+      "Year": "1980"
+   },
    "inversetiling": {
       "Authors": [
          "Rulin Chen",
